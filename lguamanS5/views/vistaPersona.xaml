@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="lguamanS5.views.vistaPersona"
+             Title="vistaPersona">
+    <VerticalStackLayout>
+        <Label 
+            Text="CRUD DE PERSONA"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        
+        <Entry x:Name="txtName"
+               Placeholder="Ingrese un nombre"/>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnAgregar"
+                    Text="Agregar persona"
+                    Clicked="btnAregarPersona"
+                    Grid.Row="0"
+                    Grid.Column="0"/>
+
+            <Label x:Name="lblstatus"
+                   TextColor="Blue"
+                   Grid.Row="1"
+                   Grid.Column="0"/>
+            
+            
+            <Button x:Name="btnlistarpersona2"
+        Text="holaaaaa"
+        Clicked="btnlistarpersona2_Clicked"
+        Grid.Row="3"
+        Grid.Column="0"/>
+            
+            <CollectionView x:Name="listaPersonas"
+                            Grid.Row="2"
+                            Grid.Column="0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Id}"
+                                   Grid.Row="0"
+                                   />
+
+                            <Label Text="{Binding Name}"
+                            Grid.Row="1"
+                            />
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </VerticalStackLayout>
+        
+</ContentPage>
