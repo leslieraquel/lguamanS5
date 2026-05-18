@@ -3,6 +3,7 @@ using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks; // añadido
 
 namespace lguamanS5.Repositories
 {
@@ -60,6 +61,20 @@ namespace lguamanS5.Repositories
             return new List<persona>();
         
         }
+
+        public Task<int> DeletePersonaByIdAsync(int id)
+        {
+            init();
+            return Task.FromResult(_connection.Delete<persona>(id));
+        }
+
+        public Task<int> UpdateAsync(persona persona)
+        {
+            init();
+            return Task.FromResult(_connection.Update(persona)); // corregido: envolver int en Task<int>
+        }
+
+
     }
 
 }

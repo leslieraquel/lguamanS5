@@ -72,6 +72,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="views\editarPersona.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="views\vistaPersona.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

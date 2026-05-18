@@ -2,76 +2,123 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="lguamanS5.views.vistaPersona"
-             Title="vistaPersona">
-    <VerticalStackLayout>
-        <Label 
-            Text="CRUD DE PERSONA"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        
-        <Entry x:Name="txtName"
-               Placeholder="Ingrese un nombre"/>
+             Title="CRUD PERSONAS">
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+    <ScrollView>
 
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
+        <VerticalStackLayout Padding="15" Spacing="10">
 
-            </Grid.ColumnDefinitions>
+            <!-- TITULO -->
+            <Label Text="CRUD DE PERSONA"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <!-- INPUT -->
+            <Entry x:Name="txtName"
+                   Placeholder="Ingrese un nombre" />
+
+            <!-- BOTON AGREGAR -->
             <Button x:Name="btnAgregar"
-                    Text="Agregar persona"
+                    Text="Agregar Persona"
                     Clicked="btnAregarPersona"
-                    Grid.Row="0"
-                    Grid.Column="0"/>
+                    BackgroundColor="Green"
+                    TextColor="White"/>
 
+            <!-- STATUS -->
             <Label x:Name="lblstatus"
                    TextColor="Blue"
-                   Grid.Row="1"
-                   Grid.Column="0"/>
-            
-            
+                   FontAttributes="Bold"/>
+
+            <!-- BOTON LISTAR -->
             <Button x:Name="btnlistarpersona2"
-        Text="holaaaaa"
-        Clicked="btnlistarpersona2_Clicked"
-        Grid.Row="3"
-        Grid.Column="0"/>
-            
-            <CollectionView x:Name="listaPersonas"
-                            Grid.Row="2"
-                            Grid.Column="0">
+                    Text="Listar Personas"
+                    Clicked="btnlistarpersona2_Clicked"
+                    BackgroundColor="DarkBlue"
+                    TextColor="White"/>
+
+            <!-- ENCABEZADO TABLA -->
+            <Grid BackgroundColor="DarkGreen"
+                  Padding="8">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="170"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="ID"
+                       FontAttributes="Bold"
+                       Grid.Column="0"/>
+
+                <Label Text="Nombre"
+                       FontAttributes="Bold"
+                       Grid.Column="1"/>
+
+                <Label Text="Acciones"
+                       FontAttributes="Bold"
+                       Grid.Column="2"/>
+
+            </Grid>
+
+            <!-- LISTA -->
+            <CollectionView x:Name="listaPersonas">
+
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
 
-                            </Grid.ColumnDefinitions>
-                            <Label Text="{Binding Id}"
-                                   Grid.Row="0"
-                                   />
+                        <Frame BorderColor="Black"
+                               Margin="0,3"
+                               Padding="8"
+                               CornerRadius="8">
 
-                            <Label Text="{Binding Name}"
-                            Grid.Row="1"
-                            />
+                            <Grid>
 
-                        </Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="60"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="170"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- ID -->
+                                <Label Text="{Binding Id}"
+                                       VerticalOptions="Center"
+                                       Grid.Column="0"/>
+
+                                <!-- NOMBRE -->
+                                <Label Text="{Binding Name}"
+                                       VerticalOptions="Center"
+                                       Grid.Column="1"/>
+
+                                <!-- BOTONES -->
+                                <HorizontalStackLayout Grid.Column="2"
+                                                       Spacing="8">
+
+                                    <Button Text="Editar"
+                                            BackgroundColor="Orange"
+                                            TextColor="White"
+                                            Clicked="EditarPersona_Clicked"
+                                            CommandParameter="{Binding .}"/>
+
+                                    <Button Text="Eliminar"
+                                            BackgroundColor="Red"
+                                            TextColor="White"
+                                            Clicked="EliminarPersona_Clicked"
+                                            CommandParameter="{Binding .}"/>
+
+                                </HorizontalStackLayout>
+
+                            </Grid>
+
+                        </Frame>
+
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
+
             </CollectionView>
-        </Grid>
-    </VerticalStackLayout>
-        
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
 </ContentPage>

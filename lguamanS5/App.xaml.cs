@@ -1,4 +1,5 @@
-﻿using lguamanS5.Repositories;
+﻿//using Kotlin.Contracts;
+using lguamanS5.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace lguamanS5
@@ -15,7 +16,9 @@ namespace lguamanS5
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            return new Window(new views.vistaPersona());
+            return new Window(
+        new NavigationPage(new views.vistaPersona())
+    );
         }
     }
 }
